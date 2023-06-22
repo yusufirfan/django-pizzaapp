@@ -16,3 +16,8 @@ from django.contrib.auth.forms import UserCreationForm
 class UserCreateView(FixView, CreateView):
     form_class = UserCreationForm
     success_url = '/user/login/'
+
+    def get_success_url(self):
+        from django.contrib.auth import login
+        login(self.request, self.object)
+        return super().get_success_url()
