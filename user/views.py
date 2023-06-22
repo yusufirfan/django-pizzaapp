@@ -9,3 +9,10 @@ class UserLoginView(FixView, LoginView):
 
 class UserLogoutView(FixView, LogoutView):
     pass
+
+from django.views.generic import CreateView
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateView(FixView, CreateView):
+    form_class = UserCreationForm
+    success_url = '/user/login/'
