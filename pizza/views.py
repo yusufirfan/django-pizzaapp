@@ -1,3 +1,5 @@
+from typing import Any
+from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 
 def home(request):
@@ -46,5 +48,12 @@ class OrderUpdateView(FixView, UpdateView):
     template_name = 'pizza/order_form.html'
     context_object_name = 'form'
 
+    def post(self, request, *args, **kwargs):
+        messages.success(request, 'Updated.')
+        return super().post(request, *args, **kwargs)
+
 class OrderDeleteView(FixView, DeleteView):
-    pass
+    
+    def get(self, request, *args, **kwargs):
+        messages.success(request, 'Deleted.')
+        return super().delete(request, *args, **kwargs)
