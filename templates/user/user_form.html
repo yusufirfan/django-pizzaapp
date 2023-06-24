@@ -2,12 +2,19 @@
 
 {% block container %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form }}
-    </table>
-    <button type="submit">Submit</button>
-</form>
+<div class="mx-auto d-flex justify-content-center align-items-center pt-5">
+    <div class="card">
+        <div class="card-body">
+            <h2>{{ title }}</h2> {# Sayfa Başlığı #}
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <table>{{ form }}</table>
+                <br>
+                <input class="btn btn-primary" type="submit" value="OK">
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock container %}
