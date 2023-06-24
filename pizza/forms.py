@@ -5,3 +5,6 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         exclude = []
+        widgets = {
+            'size': forms.RadioSelect,
+        }

@@ -28,7 +28,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Pizzas</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link text-danger" href="#"><b>{{ user.username }}</b></a></li>
-                    {% comment %} <li class="nav-item"><a class="nav-link" href="{% url 'order_list' %}">My Orders</a></li> {% endcomment %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'order_list' %}">My Orders</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'user_logout' %}">Logout</a></li>
                     {% if user.is_superuser %}
                     <li class="nav-item"><a class="nav-link" target="_blank" href="/admin"><b>Dashboard</b></a></li>

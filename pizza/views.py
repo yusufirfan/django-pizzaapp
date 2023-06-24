@@ -40,7 +40,7 @@ class OrderCreateView(FixView, CreateView):
 
 class OrderDetailView(FixView, DetailView):
     template_name = 'pizza/order_detail.html'
-    context_object_name = 'form'
+    context_object_name = 'order'
 
 class OrderUpdateView(FixView, UpdateView):
     template_name = 'pizza/order_form.html'
