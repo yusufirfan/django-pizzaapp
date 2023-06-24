@@ -46,5 +46,5 @@ class OrderUpdateView(FixView, UpdateView):
     template_name = 'pizza/order_form.html'
     context_object_name = 'form'
 
-class OrderDeleteView(FixView, DeleteView)
+class OrderDeleteView(FixView, DeleteView):
     pass
