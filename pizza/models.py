@@ -1,6 +1,7 @@
+from typing import Iterable, Optional
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.core.exceptions import ValidationError
 
 class Topping(models.Model):
     name = models.CharField(max_length=64)
@@ -18,6 +19,7 @@ class Pizza(models.Model):
     def __str__(self):
         return self.name
 
+from django.core.validators import MinValueValidator
 
 class Order(models.Model):
     SIZES = (
@@ -28,7 +30,13 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
     size = models.CharField(max_length=100, choices=SIZES, default="M")
-    quantity = models.IntegerField(default=1)
-    
+    quantity = models.PositiveIntegerField(default=1)
+
+    def save(self, *args, **kwargs):
+        if self.quantity<=0:
+            raise ValidationError("You should select a quantity greater than 0.")
+        else:
+            super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.user.username} # {self.pizza.name} * {self.quantity} "

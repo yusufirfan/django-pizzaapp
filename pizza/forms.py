@@ -4,7 +4,10 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        exclude = []
+        exclude = [
+            'user',
+            'pizza',
+        ]
         widgets = {
             'size': forms.RadioSelect,
         }
